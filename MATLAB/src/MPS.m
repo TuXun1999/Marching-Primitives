@@ -325,7 +325,7 @@ for iter = 1 : para.maxIter
     bP_body = Rot' * bP;
     scale_limit = mean(abs(bP_body'));
     ub(3 : 5) = scale_limit;
-    
+
     cost_func = @(para) differenceSQSDF(...
         para, sdf_active, points_active, truncation, weight);
     [x_n, cost_n] = lsqnonlin(cost_func, x, lb, ub, options);
@@ -426,8 +426,8 @@ for iter = 1 : para.maxIter
             bP = boundingPoints - x_candidate(idx(i_candidate), 9:11)';
             bP_body = Rot' * bP;
             scale_limit = mean(abs(bP_body'));
-            ub(3 : 5) = scale_limit;        
-            
+            ub(3 : 5) = scale_limit; 
+
             [x_switch, cost_switch] = lsqnonlin(...
                 cost_func, x_candidate(idx(i_candidate), :), ...
                 lb, ub, options);
